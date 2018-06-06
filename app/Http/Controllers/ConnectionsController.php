@@ -7,6 +7,8 @@ use App\User;
 
 class ConnectionsController extends Controller
 {
+  // Connections are stored within the Users table, with each user containing a pointer to the other.
+  // User data is stripped down to name and color for duplicate storage.
     function create(Request $request)
     {
         $requestor = User::find($request->requestor);
@@ -23,7 +25,7 @@ class ConnectionsController extends Controller
         $requestee->save();
 
     }
-
+    // destroy removes reference to the connection from both parties. 
     function destroy(Request $request)
     {
       $requestor = User::find($request->requestor);
